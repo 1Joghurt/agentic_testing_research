@@ -1,2 +1,5 @@
 ignores:
   - hypotheses_fixing.md
+  - prompts/*
+  - "**/CONTEXT.md"
+  - "**/SPECIFICATIONS.md"

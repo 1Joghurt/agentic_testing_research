@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/test-runs.schema.json",
+  "title": "Experiment Suite Test Runs",
+  "description": "Configuration schema for experiment_runner.py test-runs files.",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "$ref": "#/$defs/experiment"
+  },
+  "$defs": {
+    "non_empty_string": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S",
+      "description": "Path relative to the test-runs JSON file."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]+$",
+      "description": "Test-object version folder name."
+    },
+    "experiment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "test_object", "runs"],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "test_object": {
+          "type": "string",
+          "enum": ["realworld", "workshophub"]
+        },
+        "executions": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        },
+        "runs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/run"
+          }
+        }
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "system_base_prompt",
+        "system_paradigm_prompt",
+        "user_prompt",
+        "app_specifications",
+        "context",
+        "active_tools"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "version": {
+          "$ref": "#/$defs/version"
+        },
+        "system_base_prompt": {
+          "$ref": "#/$defs/relative_path"
+        },
+        "system_paradigm_prompt": {
+          "$ref": "#/$defs/relative_path"
+        },
+        "user_prompt": {
+          "$ref": "#/$defs/relative_path"
+        },
+        "app_specifications": {
+          "$ref": "#/$defs/relative_path"
+        },
+        "context": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/relative_path"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "active_tools": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/non_empty_string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "additional_script_executions": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/additional_script_executions"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      }
+    },
+    "additional_script_executions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["versions"],
+      "properties": {
+        "executions": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        },
+        "versions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/version"
+          }
+        }
+      }
+    }
+  }
+}

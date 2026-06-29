@@ -1,0 +1,15 @@
+services:
+  workshophub:
+    image: research-workshophub-original
+    build:
+      context: .
+    environment:
+      WORKSHOPHUB_DB_PATH: /data/workshophub.sqlite
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    volumes:
+      - app-data:/data
+    restart: unless-stopped
+
+volumes:
+  app-data:

@@ -1,0 +1,12 @@
+__pycache__
+node_modules
+.next
+.next-dev
+.workshophub
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.angular
+dist
+public
+.husky

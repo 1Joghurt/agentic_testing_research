@@ -1,0 +1,176 @@
+[
+  {
+    "name": "realworld-main",
+    "test_object": "realworld",
+    "executions": 5,
+    "runs": [
+      {
+        "name": "script-no-context",
+        "version": "original",
+        "system_base_prompt": "prompts/SYSTEM_BASE_PROMPT.md",
+        "system_paradigm_prompt": "prompts/SYSTEM_PROMPT_SCRIPT.md",
+        "user_prompt": "prompts/USER_PROMPT.md",
+        "app_specifications": "test-objects/RealWorld/SPECIFICATIONS.md",
+        "context": null,
+        "active_tools": [
+          "ListFiles",
+          "ReadFile",
+          "WriteFile",
+          "DeleteFile",
+          "PlaywrightMCP",
+          "PlaywrightSetup",
+          "PlaywrightTestRunner"
+        ],
+        "additional_script_executions": {
+          "executions": 5,
+          "versions": ["defect", "structure_1", "structure_2", "structure_3"]
+        }
+      },
+      {
+        "name": "script-context",
+        "version": "original",
+        "system_base_prompt": "prompts/SYSTEM_BASE_PROMPT.md",
+        "system_paradigm_prompt": "prompts/SYSTEM_PROMPT_SCRIPT.md",
+        "user_prompt": "prompts/USER_PROMPT.md",
+        "app_specifications": "test-objects/RealWorld/SPECIFICATIONS.md",
+        "context": "test-objects/RealWorld/CONTEXT.md",
+        "active_tools": [
+          "ListFiles",
+          "ReadFile",
+          "WriteFile",
+          "DeleteFile",
+          "PlaywrightMCP",
+          "PlaywrightSetup",
+          "PlaywrightTestRunner"
+        ],
+        "additional_script_executions": {
+          "executions": 5,
+          "versions": ["defect", "structure_1", "structure_2", "structure_3"]
+        }
+      },
+      {
+        "name": "agent-no-context",
+        "version": "defect",
+        "system_base_prompt": "prompts/SYSTEM_BASE_PROMPT.md",
+        "system_paradigm_prompt": "prompts/SYSTEM_PROMPT_AGENT.md",
+        "user_prompt": "prompts/USER_PROMPT.md",
+        "app_specifications": "test-objects/RealWorld/SPECIFICATIONS.md",
+        "context": null,
+        "active_tools": [
+          "ListFiles",
+          "ReadFile",
+          "WriteFile",
+          "DeleteFile",
+          "PlaywrightMCP",
+          "GetJsonSchema",
+          "ValidateJson"
+        ]
+      },
+      {
+        "name": "agent-context",
+        "version": "defect",
+        "system_base_prompt": "prompts/SYSTEM_BASE_PROMPT.md",
+        "system_paradigm_prompt": "prompts/SYSTEM_PROMPT_AGENT.md",
+        "user_prompt": "prompts/USER_PROMPT.md",
+        "app_specifications": "test-objects/RealWorld/SPECIFICATIONS.md",
+        "context": "test-objects/RealWorld/CONTEXT.md",
+        "active_tools": [
+          "ListFiles",
+          "ReadFile",
+          "WriteFile",
+          "DeleteFile",
+          "PlaywrightMCP",
+          "GetJsonSchema",
+          "ValidateJson"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "workshophub-main",
+    "test_object": "workshophub",
+    "executions": 5,
+    "runs": [
+      {
+        "name": "script-no-context",
+        "version": "original",
+        "system_base_prompt": "prompts/SYSTEM_BASE_PROMPT.md",
+        "system_paradigm_prompt": "prompts/SYSTEM_PROMPT_SCRIPT.md",
+        "user_prompt": "prompts/USER_PROMPT.md",
+        "app_specifications": "test-objects/WorkshopHub/SPECIFICATIONS.md",
+        "context": null,
+        "active_tools": [
+          "ListFiles",
+          "ReadFile",
+          "WriteFile",
+          "DeleteFile",
+          "PlaywrightMCP",
+          "PlaywrightSetup",
+          "PlaywrightTestRunner"
+        ],
+        "additional_script_executions": {
+          "executions": 5,
+          "versions": ["defect", "structure_1", "structure_2", "structure_3"]
+        }
+      },
+      {
+        "name": "script-context",
+        "version": "original",
+        "system_base_prompt": "prompts/SYSTEM_BASE_PROMPT.md",
+        "system_paradigm_prompt": "prompts/SYSTEM_PROMPT_SCRIPT.md",
+        "user_prompt": "prompts/USER_PROMPT.md",
+        "app_specifications": "test-objects/WorkshopHub/SPECIFICATIONS.md",
+        "context": "test-objects/WorkshopHub/CONTEXT.md",
+        "active_tools": [
+          "ListFiles",
+          "ReadFile",
+          "WriteFile",
+          "DeleteFile",
+          "PlaywrightMCP",
+          "PlaywrightSetup",
+          "PlaywrightTestRunner"
+        ],
+        "additional_script_executions": {
+          "executions": 5,
+          "versions": ["defect", "structure_1", "structure_2", "structure_3"]
+        }
+      },
+      {
+        "name": "agent-no-context",
+        "version": "defect",
+        "system_base_prompt": "prompts/SYSTEM_BASE_PROMPT.md",
+        "system_paradigm_prompt": "prompts/SYSTEM_PROMPT_AGENT.md",
+        "user_prompt": "prompts/USER_PROMPT.md",
+        "app_specifications": "test-objects/WorkshopHub/SPECIFICATIONS.md",
+        "context": null,
+        "active_tools": [
+          "ListFiles",
+          "ReadFile",
+          "WriteFile",
+          "DeleteFile",
+          "PlaywrightMCP",
+          "GetJsonSchema",
+          "ValidateJson"
+        ]
+      },
+      {
+        "name": "agent-context",
+        "version": "defect",
+        "system_base_prompt": "prompts/SYSTEM_BASE_PROMPT.md",
+        "system_paradigm_prompt": "prompts/SYSTEM_PROMPT_AGENT.md",
+        "user_prompt": "prompts/USER_PROMPT.md",
+        "app_specifications": "test-objects/WorkshopHub/SPECIFICATIONS.md",
+        "context": "test-objects/WorkshopHub/CONTEXT.md",
+        "active_tools": [
+          "ListFiles",
+          "ReadFile",
+          "WriteFile",
+          "DeleteFile",
+          "PlaywrightMCP",
+          "GetJsonSchema",
+          "ValidateJson"
+        ]
+      }
+    ]
+  }
+]

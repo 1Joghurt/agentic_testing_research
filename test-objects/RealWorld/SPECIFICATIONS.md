@@ -1,0 +1,1 @@
+The application does not contain any data yet, but you may create and modify your own entries to test its functionalities.
