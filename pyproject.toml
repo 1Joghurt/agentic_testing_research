@@ -1,0 +1,50 @@
+[project]
+name = "thesis-research"
+version = "0.1.0"
+description = "Research playground for configurable LLM experiments."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "matplotlib>=3.10.0",
+    "mcp>=1.27.2",
+    "openai>=2.0.0",
+    "pandas>=2.3.0",
+    "pydantic>=2.13.0",
+    "pydantic-settings>=2.12.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.0",
+    "rapidfuzz>=3.14.0",
+    "rich>=15.0.0",
+    "seaborn>=0.13.0",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.0",
+    "pre-commit>=4.0.0",
+    "pytest>=9.0.0",
+    "pytest-playwright>=0.7.0",
+    "ruff>=0.14.0",
+    "ty>=0.0.1a20",
+    "types-jsonschema>=4.26.0.20260518",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py314"
+src = ["agent_runner", "experiment_orchestration", "analysis/src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+files = ["agent_runner", "experiment_orchestration", "analysis/src"]
+
+[[tool.mypy.overrides]]
+module = ["pandas.*", "seaborn.*", "yaml.*"]
+ignore_missing_imports = true
+
+[tool.ty.src]
+exclude = ["test-objects/RealWorld"]

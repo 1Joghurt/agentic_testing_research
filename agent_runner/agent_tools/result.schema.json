@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AgentResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["target_url", "summary", "findings"],
+  "properties": {
+    "target_url": {
+      "type": "string",
+      "description": "The target URL of the tested application."
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tested_areas", "limitations"],
+      "properties": {
+        "tested_areas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Application areas or user flows that were examined."
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Known limitations of the exploration, such as untested areas or unavailable functionality."
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "description": "List of findings identified during the exploration.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "description"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^F-[0-9]{3}$",
+            "description": "Unique finding identifier, for example F-001."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Short title of the finding."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Concise description of the observed issue."
+          }
+        }
+      }
+    }
+  }
+}
