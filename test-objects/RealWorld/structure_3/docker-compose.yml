@@ -1,0 +1,48 @@
+services:
+  frontend:
+    image: research-realworld-frontend-original
+    build:
+      context: ./frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      - backend
+      
+  backend:
+    image: research-realworld-backend-original
+    build:
+      context: ./backend
+    command: >
+      sh -c "
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8081"
+    ports:
+      - "${BACKEND_PORT:-8081}:8081"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DEBUG: "True"
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/postgres
+      ALLOWED_HOSTS: "*"
+
+  db:
+    image: postgres:18
+    restart: always
+    ports:
+      - "${DB_PORT:-5433}:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: postgres
+    volumes:
+      - db-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  db-data:
+

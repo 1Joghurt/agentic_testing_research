@@ -1,0 +1,1 @@
+The application already contains seed data that can be used for testing.

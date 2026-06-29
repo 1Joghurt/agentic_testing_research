@@ -1,0 +1,12 @@
+node_modules
+.next
+.next-dev
+out
+dist
+npm-debug.log*
+.env*
+!.env.example
+.workshophub
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal

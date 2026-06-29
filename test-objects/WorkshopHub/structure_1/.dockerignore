@@ -1,0 +1,11 @@
+node_modules
+.next
+.next-dev
+.git
+npm-debug.log*
+README.md
+docs
+.workshophub
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
