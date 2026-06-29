@@ -1,0 +1,22 @@
+ARG NODE_VERSION=26.3.1
+ARG PLAYWRIGHT_VERSION=1.61.0
+
+FROM node:${NODE_VERSION}-bookworm-slim
+
+ARG PLAYWRIGHT_VERSION
+
+ENV HOME=/tmp \
+    PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+
+WORKDIR /runner
+
+RUN npm install --no-audit --no-fund --no-save "@playwright/test@${PLAYWRIGHT_VERSION}" \
+    && ./node_modules/.bin/playwright install --with-deps chromium \
+    && ln -s "$(node -e 'process.stdout.write(require("playwright").chromium.executablePath())')" \
+        /usr/local/bin/playwright-chromium \
+    && npm cache clean --force \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /runner/suite
+
+ENTRYPOINT ["/runner/suite/node_modules/.bin/playwright", "test"]

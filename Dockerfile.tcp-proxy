@@ -1,0 +1,13 @@
+ARG PYTHON_VERSION=3.14.6
+
+FROM python:${PYTHON_VERSION}-slim-bookworm
+
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends libatomic1 xauth \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY experiment_orchestration/tcp_proxy.py ./
+
+ENTRYPOINT ["python", "/app/tcp_proxy.py"]
